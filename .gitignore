@@ -1,0 +1,8 @@
+# Private/personal config
+.ignore
+AGENTS.md
+agent-references/
+tsconfig.json
+
+# OpenCode internal config
+.opencode/

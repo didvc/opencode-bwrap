@@ -1,0 +1,49 @@
+#!/bin/bash
+set -euo pipefail
+
+OP_DATA="$HOME/.local/share/opencode"
+OP_CONFIG="$HOME/.config/opencode"
+OP_CACHE="$HOME/.cache/opencode"
+OP_STATE="$HOME/.local/state/opencode"
+
+mkdir -p "$OP_DATA" "$OP_CONFIG" "$OP_CACHE" "$OP_STATE"
+
+WORKSPACES=(
+    "$(pwd)"
+)
+
+WORKSPACE_BINDS=()
+for ws in "${WORKSPACES[@]}"; do
+    [ -d "$ws" ] && WORKSPACE_BINDS+=(--bind "$ws" "$ws")
+done
+
+NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+
+exec bwrap \
+    --unshare-all \
+    --share-net \
+    --die-with-parent \
+    --proc /proc \
+    --dev /dev \
+    --tmpfs /tmp \
+    --tmpfs /run \
+    --ro-bind /usr /usr \
+    --symlink usr/lib /lib \
+    --symlink usr/lib64 /lib64 \
+    --symlink usr/bin /bin \
+    --symlink usr/sbin /sbin \
+    --ro-bind /etc /etc \
+    --dir "$HOME" \
+    --setenv HOME "$HOME" \
+    --setenv PATH "$PATH" \
+    --setenv TMPDIR /tmp \
+    --chdir "$(pwd)" \
+    --bind "$OP_CONFIG" "$HOME/.config/opencode" \
+    --bind "$OP_DATA" "$HOME/.local/share/opencode" \
+    --bind "$OP_CACHE" "$HOME/.cache/opencode" \
+    --bind "$OP_STATE" "$HOME/.local/state/opencode" \
+    --ro-bind-try "$NVM_DIR" "$NVM_DIR" \
+    --ro-bind-try "$HOME/.config/gh" "$HOME/.config/gh" \
+    --ro-bind-try "$HOME/.gitconfig" "$HOME/.gitconfig" \
+    "${WORKSPACE_BINDS[@]}" \
+    -- opencode "$@"
