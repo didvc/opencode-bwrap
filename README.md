@@ -2,6 +2,8 @@
 
 Run [opencode](https://github.com/anomalyco/opencode) inside a [bubblewrap](https://github.com/containers/bubblewrap) sandbox — keeping AI-driven file operations confined to your current working directory.
 
+> **See also: [`ai-bwrap`](https://github.com/didvc/ai-bwrap)** — the multi-agent sequel to this project. Same sandbox approach, extended to Claude Code, opencode, Grok, or a plain shell, with an extensible agent registry.
+
 ## What it does
 
 `opencode-bwrap` is a thin shell wrapper that launches opencode inside a `bwrap` (bubblewrap) sandbox. The sandbox:
