@@ -102,11 +102,10 @@ MIT
 
 <!-- BEGIN gh-mutual-linking -->
 
----
-
 ### Related projects
 
-- [**ai-bwrap**](https://github.com/didvc/ai-bwrap) — Run AI coding agents (Claude Code, opencode, Grok, ...) inside a bubblewrap sandbox — one wrapper, any agent.
-- [**agent.txtar**](https://github.com/didvc/agent.txtar) — Portable text block for giving structured context to AI agents — embed anywhere, parse anywhere
-- [**claude-code-jsonl-editor**](https://github.com/didvc/claude-code-jsonl-editor) — 🚀 Interactive JSONL editor for Claude Code conversation files with real-time file system synchronization. Efficient prompt engineering through conversation editing.
+- [**git-dup**](https://github.com/didvc/git-dup) — Snapshot a git subdirectory (committed state + untracked files) into a timestamped sibling directory
+- [**claude-email-leak-notice**](https://github.com/didvc/claude-email-leak-notice) — Claude Code plugin: warns once per session when a personal email address appears in a tool payload, so it does not end up in a commit or a pushed…
+- [**claude-chrome-multi-instance-warn**](https://github.com/didvc/claude-chrome-multi-instance-warn) — Claude Code plugin: warns once per session when a tool payload is about to launch another browser (Chrome/Playwright/Puppeteer/CDP) or fan work…
+- [**didvc**](https://github.com/didvc/didvc) — a little bit about me/vulpes.
 <!-- END gh-mutual-linking -->
